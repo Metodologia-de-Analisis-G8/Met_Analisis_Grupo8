@@ -1,0 +1,16 @@
+Resumen de correciones:
+
+1. Diagrama SD:
+    - Quitar el sistema del Diagrama
+    - Añadir el restaurant 
+    - Crear las dependencias entre el clinete y el restaurant
+
+2. Diagrama SR:
+    - Revisar el cliente
+    - Añadir una meta a Admin
+    - Corregir en general, tener ojo con las conexiones
+
+3. Diagrama BPMN:
+    - Añadir sistemas externos que se debieran considerar
+    - Colocar las finalizaciones no exitosas con la sintaxis correspondiente
+    - Cambiar nombre de los usuarios
