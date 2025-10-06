@@ -1,0 +1,275 @@
+{
+  "actors": [
+    {
+      "id": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "text": "Restaurant",
+      "type": "istar.Agent",
+      "x": 471,
+      "y": 44,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "nodes": []
+    },
+    {
+      "id": "5976890a-025e-4432-8a5a-a96c70231b93",
+      "text": "Cliente/s",
+      "type": "istar.Actor",
+      "x": 89,
+      "y": 241,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "nodes": []
+    },
+    {
+      "id": "272ab69b-5ea7-40ba-bcef-0276473c68a6",
+      "text": "Admin",
+      "type": "istar.Role",
+      "x": 739,
+      "y": 250,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "nodes": []
+    }
+  ],
+  "orphans": [],
+  "dependencies": [
+    {
+      "id": "50a51aba-14cb-468a-9393-fbb2bef9b42d",
+      "text": "Informar Resultado Solicitud",
+      "type": "istar.Goal",
+      "x": 566,
+      "y": 178,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "source": "272ab69b-5ea7-40ba-bcef-0276473c68a6",
+      "target": "25c0e1fe-be28-4b76-b076-bcfec5cece95"
+    },
+    {
+      "id": "51d89ddd-159c-400e-af24-014902eda659",
+      "text": "Solicitar una Mesa",
+      "type": "istar.Goal",
+      "x": 263,
+      "y": 125,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "source": "5976890a-025e-4432-8a5a-a96c70231b93",
+      "target": "25c0e1fe-be28-4b76-b076-bcfec5cece95"
+    },
+    {
+      "id": "6dac2556-4ef8-44e9-82af-c4cdf947d2b2",
+      "text": "Informar Sobre Solicitud",
+      "type": "istar.Goal",
+      "x": 683,
+      "y": 67,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "source": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "target": "272ab69b-5ea7-40ba-bcef-0276473c68a6"
+    },
+    {
+      "id": "caa53475-0b6e-4b20-a6e0-8f2a44399077",
+      "text": "Dar Resultado",
+      "type": "istar.Goal",
+      "x": 332,
+      "y": 249,
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      },
+      "customProperties": {
+        "Description": ""
+      },
+      "source": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "target": "5976890a-025e-4432-8a5a-a96c70231b93"
+    }
+  ],
+  "links": [
+    {
+      "id": "c4d71354-6af9-47a3-a522-244653ace424",
+      "type": "istar.DependencyLink",
+      "source": "272ab69b-5ea7-40ba-bcef-0276473c68a6",
+      "target": "50a51aba-14cb-468a-9393-fbb2bef9b42d",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "ed836dbd-0ab6-4404-a360-29469535e723",
+      "type": "istar.DependencyLink",
+      "source": "50a51aba-14cb-468a-9393-fbb2bef9b42d",
+      "target": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "6c55e019-57e0-49c1-9fa3-915e74b30ef0",
+      "type": "istar.DependencyLink",
+      "source": "5976890a-025e-4432-8a5a-a96c70231b93",
+      "target": "51d89ddd-159c-400e-af24-014902eda659",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "d0bcf2d4-ae15-4014-87b3-438739e31ceb",
+      "type": "istar.DependencyLink",
+      "source": "51d89ddd-159c-400e-af24-014902eda659",
+      "target": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "9a35031d-28ec-4945-9e6e-20da5f7c71b7",
+      "type": "istar.DependencyLink",
+      "source": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "target": "6dac2556-4ef8-44e9-82af-c4cdf947d2b2",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "374c54f2-210d-46db-aff3-34212f870ef6",
+      "type": "istar.DependencyLink",
+      "source": "6dac2556-4ef8-44e9-82af-c4cdf947d2b2",
+      "target": "272ab69b-5ea7-40ba-bcef-0276473c68a6",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "bfd0d5d4-612a-4791-92cd-8166a5822c10",
+      "type": "istar.DependencyLink",
+      "source": "25c0e1fe-be28-4b76-b076-bcfec5cece95",
+      "target": "caa53475-0b6e-4b20-a6e0-8f2a44399077",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    },
+    {
+      "id": "25013b4c-4d60-408e-b152-396933658815",
+      "type": "istar.DependencyLink",
+      "source": "caa53475-0b6e-4b20-a6e0-8f2a44399077",
+      "target": "5976890a-025e-4432-8a5a-a96c70231b93",
+      "extension": {
+        "stereotype": "",
+        "selectedStereotype": "",
+        "taggedValue": "",
+        "selectedTaggedValue": ""
+      }
+    }
+  ],
+  "display": {
+    "50a51aba-14cb-468a-9393-fbb2bef9b42d": {
+      "width": 100.46249389648438,
+      "height": 38.025001525878906
+    },
+    "c4d71354-6af9-47a3-a522-244653ace424": {
+      "vertices": [
+        {
+          "x": 719,
+          "y": 235
+        }
+      ]
+    },
+    "ed836dbd-0ab6-4404-a360-29469535e723": {
+      "vertices": [
+        {
+          "x": 535,
+          "y": 94
+        }
+      ]
+    },
+    "25c0e1fe-be28-4b76-b076-bcfec5cece95": {
+      "collapsed": true
+    },
+    "5976890a-025e-4432-8a5a-a96c70231b93": {
+      "collapsed": true
+    },
+    "272ab69b-5ea7-40ba-bcef-0276473c68a6": {
+      "collapsed": true
+    }
+  },
+  "tool": "pistar.2.0.0",
+  "istar": "2.0",
+  "extension": {
+    "stereotype_list": [],
+    "taggedvalue_list": [],
+    "group_list": []
+  },
+  "saveDate": "Mon, 06 Oct 2025 14:00:29 GMT",
+  "diagram": {
+    "width": 1000,
+    "height": 761,
+    "name": "Welcome Model",
+    "customProperties": {
+      "Description": "Welcome to the piStar tool version 2.1.0, released on November, 2021! This model describes some of the recent improvements in the tool. Click on the purple elements for further info.\n\nFor help using this tool, please check the Help menu above"
+    }
+  }
+}
