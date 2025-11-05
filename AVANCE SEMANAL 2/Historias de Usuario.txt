@@ -1,0 +1,12 @@
+1. Como turista extranjero, quiero ver la información traducida al inglés, para poder entender los detalles de cada destino sin barrera de idioma. 
+2. Como usuario nacional, quiero filtrar destinos por tipo de turismo, para encontrar opciones que se ajusten a mis intereses. 
+3. Como persona con movilidad reducida, quiero saber si un destino es accesible, para planificar mejor mi viaje. 
+4. Como turista, quiero ver en el mapa cómo llegar al destino, para tener claridad sobre la ruta y el transporte disponible. 
+5. Como usuario casual, quiero acceder a la información sin registrarme, para ahorrar tiempo y proteger mis datos personales. 
+6. Como viajero con bajo presupuesto, quiero ver los precios de entrada y servicios, para organizar mejor mi viaje. 
+7. Como turista indeciso, quiero ver una lista de destinos recomendados, para inspirarme y elegir un lugar atractivo. 
+8. Como persona con hijos, necesito saber información sobre servicios higiénicos cercanos y si estos son de pago o gratuitos.
+9. Como turista, quiero seleccionar fecha y horario del recorrido, para asistir en un momento disponible.
+10. Como turista, quiero reservar un cupo para el recorrido, para asegurar disponibilidad.
+11. Como turista, quiero pagar mi recorrido en línea, para confirmar mi compra de forma inmediata.
+12. Como turista, quiero recibir un comprobante digital, para validar mi reserva cuando llegue al lugar.
