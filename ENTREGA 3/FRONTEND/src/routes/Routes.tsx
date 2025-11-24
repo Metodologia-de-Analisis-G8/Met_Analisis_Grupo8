@@ -27,12 +27,17 @@ const VerifyEmail = Loadable(
   lazy(() => import("../views/authentication/VerifyEmail"))
 );
 const DestinationList = Loadable(
-  lazy(() => import("../views/destination/DestinationList"))
+  lazy(() => import("../views/destinos/DestinationList"))
 );
 const DestinationView = Loadable(
-  lazy(() => import("../views/destination/DestinationView"))
+  lazy(() => import("../views/destinos/DestinationView"))
 );
-
+const ProfileScreen = Loadable(
+  lazy(() => import("../views/perfil/perfil").then((module) => ({ default: module.ProfileScreen })))
+);
+const EditProfileScreen = Loadable(
+  lazy(() => import("../views/perfil/editarperfil").then((module) => ({ default: module.EditProfileScreen })))
+);
 
 /* ****End Pages***** */
 
@@ -74,9 +79,16 @@ const Router = [
   children: [
     { path: "", element: <Home /> },
     { path: "home", element: <Home /> },
-    { path: "*", element: <Navigate to="/error/404" />  },
-   ],
-  },
+
+    { path: "destinos", element: <DestinationList /> },
+    { path: "destinos/:id", element: <DestinationView /> },
+    { path: "/perfil", element: <ProfileScreen />, },
+    { path: "/perfil/editarperfil", element: <EditProfileScreen />,},
+
+    { path: "*", element: <Navigate to="/error/404" />  }
+  ],
+},
+
   {
     path: "/error",
     element: <BlankLayout />,
@@ -85,14 +97,6 @@ const Router = [
       { path: "404", exact: true, element: <Error /> },
     ],
   },
-  {
-  path: "/destinations",
-  element: <DestinationList />,
-},
-{
-  path: "/destination/:id",
-  element: <DestinationView />,
-},
 ];
 
 

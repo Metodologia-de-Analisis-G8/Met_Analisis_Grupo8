@@ -8,15 +8,13 @@ export class AuthController {
   constructor(private authService: AuthService, private usersService: UsersService) {}
 
   @Post('register/turista')
-  registerTurista(@Body() body: CreateUserDto) {
-    // forzamos tipo turista
-    return this.usersService.create({ ...body, tipo: 'turista' });
+  registerTurista(@Body() body: Omit<CreateUserDto, 'tipo'>) {
+    return this.authService.register({ ...body, tipo: 'turista' });
   }
 
   @Post('register/prestador')
-  registerPrestador(@Body() body: CreateUserDto) {
-    // forzamos tipo prestador
-    return this.usersService.create({ ...body, tipo: 'prestador' });
+  registerPrestador(@Body() body: Omit<CreateUserDto, 'tipo'>) {
+    return this.authService.register({ ...body, tipo: 'prestador' });
   }
 
   @Post('login')

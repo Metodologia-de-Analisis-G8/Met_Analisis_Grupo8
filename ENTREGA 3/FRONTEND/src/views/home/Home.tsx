@@ -10,7 +10,11 @@ export default function Home() {
 
   // 👉 navegación dinámica
   const goToDestination = (id: string) => {
-    navigate(`/destination/${id}`);
+    navigate(`/destinos/${id}`);
+  };
+  
+  const goToProfile = () => {
+    navigate("/perfil");
   };
 
   return (
@@ -93,7 +97,7 @@ export default function Home() {
 
           {/* CAJÓN DEL MAIPO */}
           <div className="min-w-[260px] bg-white rounded-[25px] shadow-md pb-4 cursor-pointer"
-            onClick={() => goToDestination("cajon_maipo")}>
+            onClick={() => goToDestination("cajon")}>
             
             <div className="relative">
               <img src="/img/cajondelmaipo.jpg" alt="cajon del maipo" className="w-full h-[200px] rounded-t-[25px] object-cover" />
@@ -146,8 +150,10 @@ export default function Home() {
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="img/perfil.png" alt="perfil" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Perfil</span>
+          <div onClick={goToProfile}>
+            <img src="img/perfil.png" alt="perfil" className="w-6" />
+            <span className="text-[12px] text-[#7D848D]">Perfil</span>
+          </div>
         </div>
 
       </div>

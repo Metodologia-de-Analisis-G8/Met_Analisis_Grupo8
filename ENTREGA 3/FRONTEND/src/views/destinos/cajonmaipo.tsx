@@ -16,23 +16,11 @@ export default function DestinationView() {
 }
 
 const destinos: Record<string, DestinationData> = {
-    paine: {
-      nombre: "Torres del Paine",
-      region: "Magallanes y la Antártica",
-      rating: 4.8,
-      reviews: "10.600",
-      precio: "$5.200",
-      descripcion:
-        "En el Parque Nacional Torres del Paine, puedes disfrutar de una gran variedad de actividades, incluyendo trekking, navegación, avistamiento de fauna, y exploración de paisajes naturales.",
-      imagen: "/img/paine2.png",
-      miniaturas: [
-        "/img/paine2.png",
-        "/img/torresdelpaine.jpg",
-        "/img/torres3.png",
-        /*"/img/p4.jpg",
-        "/img/p5.jpg",*/
-      ],
-    },
+    
+  };
+
+  const goToBack = () => {
+    navigate(-1);
   };
 
   const data = destinos[id as keyof typeof destinos];
@@ -47,8 +35,9 @@ const destinos: Record<string, DestinationData> = {
         {/* Barra superior */}
         <div className="absolute top-4 left-4 flex items-center">
           <button
+            onClick={goToBack}
             className="w-9 h-9 bg-white/70 rounded-full flex items-center justify-center backdrop-blur"
-            onClick={() => navigate(-1) || navigate("/home")}>
+            >
             <img src="/img/atras.png" className="w-4" />
           </button>
         </div>

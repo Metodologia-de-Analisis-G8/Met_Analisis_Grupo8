@@ -18,7 +18,7 @@ const destinations = [
     image: "/img/atacama.jpg"
   },
   {
-    id: "cajon_maipo",
+    id: "cajon",
     name: "Cajón del Maipo",
     region: "Metropolitana",
     price: "2500",

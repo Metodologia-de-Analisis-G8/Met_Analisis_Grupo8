@@ -1,5 +1,3 @@
-
-
 import { useParams } from "react-router-dom";
 interface DestinationData {
   name: string;
@@ -35,7 +33,7 @@ const destinationsData: Record<string, DestinationData> = {
     description: "Una cultura misteriosa llena de historia y moai.",
     image: "/img/rapanui.jpg"
   },
-  cajon_maipo: {
+  cajon: {
     name: "Cajón del Maipo",
     region: "Metropolitana",
     price: "2500",
