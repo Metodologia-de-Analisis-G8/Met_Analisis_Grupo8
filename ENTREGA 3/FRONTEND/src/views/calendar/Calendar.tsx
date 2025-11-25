@@ -1,7 +1,7 @@
 import ScheduleCard from "../../components/ScheduleCard";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import { ArrowLeft, BellDot } from "lucide-react";
+import { ArrowLeft, BellDot, House, UserRound, MessageCircleMore, CalendarDays, Search } from "lucide-react";
 
 export default function Calendar() {
     const [selected, setSelected] = useState(22);
@@ -93,41 +93,41 @@ export default function Calendar() {
 
         {filter === "today" && (
           <ScheduleCard
-            title="Isla Negra"
-            location="Litoral Central"
+            title="Cerro San Cristóbal"
+            location="Región Metropolitana"
             date="15 Febrero 2025"
-            image="/img/isla_negra.png"
+            image="/img/sancri.png"
           />
         )}
 
       </div>
         {/* BOTTOM BAR */}
-      <div className="absolute bottom-0 left-0 w-full h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
+        <div className="absolute bottom-0 left-0 w-full h-[90px] bg-white border border-gray-500 rounded-t-[25px] flex justify-around items-center">
         <div className="flex flex-col items-center" onClick={goToBack}>
-          <img src="img/home.png" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Inicio</span>
+          <House />
+          <span className="text-[12px] text-black">Inicio</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="img/calendar.png" className="w-6" />
-          <span className="text-[12px] text-[#007AFF]">Calendario</span>
+          <CalendarDays/>
+          <span className="text-[12px] text-[#007AFF] font-semibold">Calendario</span>
         </div>
 
         <div className="flex flex-col items-center">
           <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
-            <img src="img/buscar.png" className="w-6" />
+            <Search className="w-6 text-white" />
           </div>
-          <span className="text-[#7D848D] text-[12px] mt-1 font-bold">Buscar</span>
+          <span className="text-black text-[12px] mt-1">Buscar</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="img/mensaje.png" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
+          <MessageCircleMore />
+          <span className="text-[12px] text-black">Mensajes</span>
         </div>
 
         <div className="flex flex-col items-center" onClick={goToProfile}>
-          <img src="img/perfil.png" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Perfil</span>
+          <UserRound />
+          <span className="text-[12px] text-black">Perfil</span>
         </div>
       </div>
 

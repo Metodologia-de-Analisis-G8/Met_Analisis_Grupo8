@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, House, UserRound, MessageCircleMore, CalendarDays, Search } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -148,32 +148,32 @@ export default function Home() {
       </div>
 
       {/* BOTTOM BAR */}
-      <div className="h-[90px] bg-white shadow-lg rounded-t-[25px] flex justify-around items-center">
+      <div className="absolute bottom-0 left-0 w-full h-[90px] bg-white border border-gray-500 rounded-t-[25px] flex justify-around items-center">
         <div className="flex flex-col items-center">
-          <img src="img/home.png" className="w-6" />
-          <span className="text-[12px] text-[#007AFF]">Inicio</span>
+          <House />
+          <span className="text-[12px] text-[#007AFF] font-semibold">Inicio</span>
         </div>
 
         <div className="flex flex-col items-center" onClick={goToCalendar}>
-          <img src="img/calendar.png" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Calendario</span>
+          <CalendarDays/>
+          <span className="text-[12px] text-black">Calendario</span>
         </div>
 
         <div className="flex flex-col items-center">
           <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
-            <img src="img/buscar.png" className="w-6" />
+            <Search className="w-6 text-white" />
           </div>
-          <span className="text-[#007AFF] text-[12px] mt-1">Buscar</span>
+          <span className="text-black text-[12px] mt-1">Buscar</span>
         </div>
 
         <div className="flex flex-col items-center">
-          <img src="img/mensaje.png" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Mensajes</span>
+          <MessageCircleMore/>
+          <span className="text-[12px] text-black">Mensajes</span>
         </div>
 
         <div className="flex flex-col items-center" onClick={goToProfile}>
-          <img src="img/perfil.png" className="w-6" />
-          <span className="text-[12px] text-[#7D848D]">Perfil</span>
+          <UserRound />
+          <span className="text-[12px] text-black">Perfil</span>
         </div>
       </div>
     </div>

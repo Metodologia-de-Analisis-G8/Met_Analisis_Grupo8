@@ -43,6 +43,9 @@ const DestinationBest = Loadable(
 const Calendar = Loadable(
   lazy(() => import("../views/calendar/Calendar"))
 );
+const Splash = Loadable(
+  lazy(() => import("../views/Splash"))
+);
 
 /* ****End Pages***** */
 
@@ -85,7 +88,7 @@ const Router = [
     </MobileWrapper>
   ),
   children: [
-    { path: "", element: <Home /> },
+    { path: "", element: <Splash /> },
     { path: "home", element: <Home /> },
 
     { path: "destinos", element: <DestinationList /> },
@@ -94,6 +97,7 @@ const Router = [
     { path: "perfil/editarperfil", element: <EditProfileScreen /> },
     { path: "destinos/mejores", element: <DestinationBest /> },
     { path: "calendar", element: <Calendar /> },
+    //{ path: "splash", element: <Splash /> },
 
     { path: "*", element: <Navigate to="/error/404" />  }
   ],
