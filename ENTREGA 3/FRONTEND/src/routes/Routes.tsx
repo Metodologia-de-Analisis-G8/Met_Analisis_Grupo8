@@ -40,7 +40,9 @@ const EditProfileScreen = Loadable(
 const DestinationBest = Loadable(
   lazy(() => import("../views/destinos/DestinationBest"))
 );
-
+const Calendar = Loadable(
+  lazy(() => import("../views/calendar/Calendar"))
+);
 
 /* ****End Pages***** */
 
@@ -91,6 +93,7 @@ const Router = [
     { path: "perfil", element: <ProfileScreen /> },
     { path: "perfil/editarperfil", element: <EditProfileScreen /> },
     { path: "destinos/mejores", element: <DestinationBest /> },
+    { path: "calendar", element: <Calendar /> },
 
     { path: "*", element: <Navigate to="/error/404" />  }
   ],

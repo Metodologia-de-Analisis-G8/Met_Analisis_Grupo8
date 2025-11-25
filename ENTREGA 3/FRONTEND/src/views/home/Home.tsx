@@ -24,6 +24,9 @@ export default function Home() {
   const goToMoreDestinations = () => {
     navigate("/destinos/mejores");
   };
+  const goToCalendar = () => {
+    navigate("/calendar");
+  }
 
   // ❤️ estados de guardado
   const [saved, setSaved] = useState<Record<SavedKeys, boolean>>({
@@ -151,7 +154,7 @@ export default function Home() {
           <span className="text-[12px] text-[#007AFF]">Inicio</span>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" onClick={goToCalendar}>
           <img src="img/calendar.png" className="w-6" />
           <span className="text-[12px] text-[#7D848D]">Calendario</span>
         </div>
