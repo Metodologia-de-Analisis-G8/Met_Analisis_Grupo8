@@ -1,4 +1,4 @@
-import { Heart, House, UserRound, MessageCircleMore, CalendarDays, Search } from "lucide-react";
+import { Heart, House, UserRound, MessageCircleMore, CalendarDays, Search, LogOut, Bell } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AnimatedPage from "../../components/AnimatedPage";
@@ -59,11 +59,11 @@ export default function Home() {
               onClick={handleLogout}
               className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center hover:bg-[#e5e7eb]"
             >
-              <img src="img/salida.png" alt="log-out" className="w-5 h-5" />
+              <LogOut/>
             </button>
 
             <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
-              <img src="img/notificacion.png" alt="notificacion" className="w-5 h-5" />
+              <Bell />
             </div>
           </div>
         </div>
