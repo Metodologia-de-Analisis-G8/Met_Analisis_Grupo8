@@ -1,4 +1,4 @@
-import { ArrowLeft, Edit3, ChevronRight } from "lucide-react";
+import { ArrowLeft, Edit3, ChevronRight, LogOut, User, Bookmark, Clock, Settings, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 export function ProfileScreen() {
@@ -10,6 +10,10 @@ export function ProfileScreen() {
 
   const goToEditProfile = () => {
     navigate('/perfil/editarperfil');
+  }
+
+  const handleLogout = () => {
+    navigate("/auth/login"); 
   }
 
   return (
@@ -33,23 +37,35 @@ export function ProfileScreen() {
       </div>
 
       {/* Menu Options */}
-      <div className="bg-white rounded-2xl shadow-md divide-y">
-        {[
-          { name: "Datos" },
-          { name: "Guardados" },
-          { name: "Últimas visitas" },
-          { name: "Configuración" },
-          { name: "Chile (CL)" },
-        ].map((item, idx) => (
-          <button
-            key={idx}
-            className="flex w-full items-center justify-between px-4 py-4 hover:bg-gray-50"
-          >
+      <div className="bg-white rounded-3xl shadow-lg p-2 space-y-2">
+      {[
+        { name: "Datos", icon: <User className="w-5 h-5 text-gray-500" /> },
+        { name: "Guardados", icon: <Bookmark className="w-5 h-5 text-gray-500" /> },
+        { name: "Últimas visitas", icon: <Clock className="w-5 h-5 text-gray-500" /> },
+        { name: "Configuración", icon: <Settings className="w-5 h-5 text-gray-500" /> },
+        { name: "Chile (CL)", icon: <Globe className="w-5 h-5 text-gray-500" /> },
+      ].map((item, idx) => (
+        <button
+          key={idx}
+          className="flex items-center justify-between w-full px-5 py-4 bg-white rounded-2xl hover:bg-gray-200/70 active:bg-gray-200 transition"
+        >
+          <div className="flex items-center gap-3">
+            {item.icon}
             <span className="text-gray-700">{item.name}</span>
-            <ChevronRight className="w-5 h-5 text-gray-400" />
-          </button>
-        ))}
+          </div>
+
+          <ChevronRight className="w-5 h-5 text-gray-400" />
+        </button>
+      ))}
       </div>
+
+      <button
+        onClick={handleLogout}
+        className="mt-10 w-full flex items-center justify-center gap-2 bg-red-500 text-white py-3 rounded-xl font-semibold"
+      >
+        <LogOut className="w-5 h-5" />
+        Cerrar sesión
+      </button>
     </div>
   );
 }

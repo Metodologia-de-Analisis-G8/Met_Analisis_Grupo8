@@ -5,7 +5,7 @@ export default function DestinationView() {
   const navigate = useNavigate();
   
   const goToBack = () => {
-    navigate('/home');
+    navigate(-1);
   }
 
   interface DestinationData {
@@ -48,7 +48,7 @@ const destinos: Record<string, DestinationData> = {
       imagen: "/img/cajon2.png",
       miniaturas: [
         "/img/cajon2.png",
-        "/img/cajonmaipo.jpg",
+        "/img/cajondelmaipo.jpg",
         "/img/cajon3.png",
         /*"/img/p4.jpg",
         "/img/p5.jpg",*/
@@ -60,29 +60,33 @@ const destinos: Record<string, DestinationData> = {
   const data = destinos[id as keyof typeof destinos];
 
   return (
-    <div className="w-full h-screen flex flex-col bg-white overflow-hidden">
-      
-      {/* IMAGEN SUPERIOR */}
-      <div className="relative w-full h-[260px]">
+      <div className="w-full min-h-screen flex flex-col bg-white">
+        {/* Barra superior */}
+        <div className="relative w-full h-[260px]">
         <img src={data.imagen} className="w-full h-full object-cover" />
 
-        {/* Barra superior */}
-        <div className="absolute top-4 left-4 flex items-center">
-          <button onClick={goToBack} className="w-9 h-9 bg-white/70 rounded-full flex items-center justify-center backdrop-blur"
-            >
-            <img src="/img/atras.png" className="w-4" />
-          </button>
-        </div>
+        {/* Botón atrás */}
+        <button
+          onClick={goToBack}
+          className="absolute top-4 left-4 z-20 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition"
+        >
+          <img src="/img/atras.png" className="w-4" />
+        </button>
 
-        <div className="absolute top-4 w-full flex justify-center">
-            <span className="bg-white px-4 py-1 rounded-xl shadow font-semibold text-[16px] text-[#1B1E28] inline-block">
-            Detalles
-            </span>
+        {/* Título que no tapa el botón */}
+        <div className="absolute top-4 left-1/2 -translate-x-1/2 z-10">
+          <span className="bg-white px-4 py-1 rounded-xl shadow font-semibold text-[16px] text-[#1B1E28] inline-block">
+          Detalles
+          </span>
         </div>
-    </div>
+        {/* IMAGEN SUPERIOR */}
+        <div className="relative w-full h-[260px]">
+        <img src={data.imagen} className="w-full h-full object-cover z-0" />
+        </div>
+      </div>
 
       {/* CONTENEDOR CURVO BLANCO */}
-      <div className="bg-white rounded-t-[40px] p-6 mt-[-35px] relative z-10">
+      <div className="relative z-20 bg-white rounded-t-[40px] p-6 mt-[-35px]">
 
         <h1 className="text-[22px] font-semibold text-[#1B1E28]">
           {data.nombre}

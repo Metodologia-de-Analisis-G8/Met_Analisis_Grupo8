@@ -8,7 +8,6 @@ import { Outlet } from "react-router-dom";
 const BlankLayout = Loadable(
   lazy(() => import("../layouts/blank-layout/BlankLayout"))
 );
-const AuthLayout = Loadable(lazy(() => import("../layouts/auth/AuthLayout")));
 
 
 /* ***End Layouts**** */
@@ -38,6 +37,10 @@ const ProfileScreen = Loadable(
 const EditProfileScreen = Loadable(
   lazy(() => import("../views/perfil/editarperfil").then((module) => ({ default: module.EditProfileScreen })))
 );
+const DestinationBest = Loadable(
+  lazy(() => import("../views/destinos/DestinationBest"))
+);
+
 
 /* ****End Pages***** */
 
@@ -49,7 +52,10 @@ const Router = [
   },
   {
     path: "/auth",
-    element: <AuthLayout />,
+    element: (
+    <><MobileWrapper>
+        <Outlet />
+      </MobileWrapper></>),
     children: [
       { path: "", exact: true, element: <Navigate to="/auth/login" /> },
       { path: "login", exact: true, element: <Login /> },
@@ -82,8 +88,9 @@ const Router = [
 
     { path: "destinos", element: <DestinationList /> },
     { path: "destinos/:id", element: <DestinationView /> },
-    { path: "/perfil", element: <ProfileScreen />, },
-    { path: "/perfil/editarperfil", element: <EditProfileScreen />,},
+    { path: "perfil", element: <ProfileScreen /> },
+    { path: "perfil/editarperfil", element: <EditProfileScreen /> },
+    { path: "destinos/mejores", element: <DestinationBest /> },
 
     { path: "*", element: <Navigate to="/error/404" />  }
   ],

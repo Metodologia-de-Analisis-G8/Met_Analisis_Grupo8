@@ -8,6 +8,10 @@ export function EditProfileScreen() {
     const goToBack = () => {
       navigate('/perfil');
     }
+
+    const goToMenu = () => {
+      navigate('/home');
+    }
   return (
     <div className="w-full min-h-screen bg-white px-5 pb-10 pt-6">
       {/* Header */}
@@ -16,7 +20,7 @@ export function EditProfileScreen() {
           <ArrowLeft className="w-5 h-5" />
         </button>
         <h1 className="font-semibold text-lg">Editar Perfil</h1>
-        <button className="text-blue-600 font-semibold">Listo</button>
+        <button onClick={goToMenu} className="text-blue-600 font-semibold">Listo</button>
       </div>
 
       {/* Avatar */}

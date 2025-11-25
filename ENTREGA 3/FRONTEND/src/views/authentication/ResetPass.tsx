@@ -13,13 +13,16 @@ export default function ResetPass() {
     // mostrar popup
     setShowModal(true);
   };
+  const goToBack = () => {
+    navigate('/auth/login');
+  }
 
   return (
     <div className="w-full h-screen bg-[#F2F2F7] flex flex-col overflow-hidden relative">
 
       {/* contenido normal */}
       <div className="flex-1 overflow-y-auto px-6 pt-8">
-        <button className="text-[#7D848D]">Volver</button>
+        <button onClick={goToBack} className="text-[#7D848D]">Volver</button>
 
         <h1 className="text-[22px] font-bold mt-6">Reestablecer Contraseña</h1>
         <p className="text-sm text-[#7D848D] mt-2">Ingresa tu correo para reestablecer tu contraseña</p>
