@@ -46,6 +46,9 @@ const Calendar = Loadable(
 const Splash = Loadable(
   lazy(() => import("../views/Splash"))
 );
+const Notification = Loadable(
+  lazy(() => import("../views/notification/Notification"))
+);
 
 /* ****End Pages***** */
 
@@ -97,8 +100,7 @@ const Router = [
     { path: "perfil/editarperfil", element: <EditProfileScreen /> },
     { path: "destinos/mejores", element: <DestinationBest /> },
     { path: "calendar", element: <Calendar /> },
-    //{ path: "splash", element: <Splash /> },
-
+    { path: "notification", element: <Notification /> },
     { path: "*", element: <Navigate to="/error/404" />  }
   ],
 },
