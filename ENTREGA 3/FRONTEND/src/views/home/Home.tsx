@@ -28,6 +28,9 @@ export default function Home() {
   const goToCalendar = () => {
     navigate("/calendar");
   }
+  const goToNotification = () => {
+    navigate("/notification");
+  }
 
   // ❤️ estados de guardado
   const [saved, setSaved] = useState<Record<SavedKeys, boolean>>({
@@ -62,9 +65,9 @@ export default function Home() {
               <LogOut/>
             </button>
 
-            <div className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
+            <button onClick={goToNotification} className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
               <Bell />
-            </div>
+            </button>
           </div>
         </div>
 
