@@ -161,6 +161,25 @@ def borrar_destino(id):
 
     return jsonify({"success": True, "message": "Destino eliminado"})
 
+@app.route("/reservas", methods=["GET"])
+def get_reservas():
+    conn = get_db()
+    cursor = conn.execute("""
+        SELECT 
+            r.id,
+            r.fecha_reserva AS date,
+            d.nombre AS title,
+            d.region AS location,
+            d.imagen AS image
+        FROM reservas r
+        JOIN destinos d ON r.destino_id = d.id
+    """)
+    
+    data = [dict(row) for row in cursor.fetchall()]
+    conn.close()
+    return jsonify(data)
+
+
 
 # ---------------------------
 # RUN SERVER

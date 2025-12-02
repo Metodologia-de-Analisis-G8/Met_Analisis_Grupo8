@@ -29,9 +29,9 @@ const destinos: Record<string, DestinationData> = {
       precio: "$5.200",
       descripcion:
         "En el Parque Nacional Torres del Paine, puedes disfrutar de una gran variedad de actividades, incluyendo trekking, navegación, avistamiento de fauna, y exploración de paisajes naturales.",
-      imagen: "/img/paine2.png",
+      imagen: "/img/paine.png",
       miniaturas: [
-        "/img/paine2.png",
+        "/img/paine.png",
         "/img/torresdelpaine.jpg",
         "/img/torres3.png",
         /*"/img/p4.jpg",
