@@ -1,18 +1,11 @@
-import { useRoutes, useLocation } from "react-router-dom";
-import { AnimatePresence } from "framer-motion";
+import MobileWrapper from "./components/MobileWrapper";
 import Router from "./routes/Routes";
+import { useRoutes } from "react-router-dom";
 
 function App() {
-  const location = useLocation();
   const content = useRoutes(Router);
 
-  return (
-    <AnimatePresence mode="wait">
-      <div key={location.pathname}>
-        {content}
-      </div>
-    </AnimatePresence>
-  );
+  return <MobileWrapper>{content}</MobileWrapper>;
 }
 
 export default App;
