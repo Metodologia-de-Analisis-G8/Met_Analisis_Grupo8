@@ -49,6 +49,9 @@ const Splash = Loadable(
 const Notification = Loadable(
   lazy(() => import("../views/notification/Notification"))
 );
+const SearchPage = Loadable(
+  lazy(() => import("../views/Seach/seach"))
+);
 
 /* ****End Pages***** */
 
@@ -101,6 +104,7 @@ const Router = [
     { path: "destinos/mejores", element: <DestinationBest /> },
     { path: "calendar", element: <Calendar /> },
     { path: "notification", element: <Notification /> },
+    { path: "search", element: <SearchPage /> },
     { path: "*", element: <Navigate to="/error/404" />  }
   ],
 },

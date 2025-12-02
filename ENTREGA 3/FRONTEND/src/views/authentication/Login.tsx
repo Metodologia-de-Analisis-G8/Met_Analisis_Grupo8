@@ -20,9 +20,9 @@ export default function Login() {
     const data = await res.json();
     console.log("respuesta backend:", data);
 
-    if (data.status === "success") {
+    if (res.ok) {
+      navigate("/home");
       toast.success("Bienvenido 👋");
-      navigate("/");
     } else {
       toast.error("Credenciales incorrectas");
     }
@@ -76,7 +76,10 @@ export default function Login() {
             <Link to="/auth/forgot-password" className="text-sm text-[#0A84FF]">Olvidaste tu contraseña?</Link>
           </div>
 
-          <button type="submit" className="w-full bg-[#0A84FF] text-white py-3 rounded-xl mt-2">Iniciar</button>
+          <button type="submit" className="w-full bg-[#0A84FF] text-white py-3 rounded-xl mt-2">
+            Iniciar
+          </button>
+
 
           <div className="text-center text-sm text-[#7D848D]">
             ¿No tienes una cuenta? <Link to="/auth/register" className="text-[#0A84FF]">Registrarse</Link>

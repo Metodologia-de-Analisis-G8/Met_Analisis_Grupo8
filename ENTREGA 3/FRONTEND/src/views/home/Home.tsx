@@ -1,4 +1,4 @@
-import { Heart, House, UserRound, MessageCircleMore, CalendarDays, Search, Bell } from "lucide-react";
+import { Heart, House, UserRound, MessageCircleMore, CalendarDays, Search, Bell, MapPin, LogOut, Star } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import AnimatedPage from "../../components/AnimatedPage.tsx";
@@ -32,6 +32,10 @@ export default function Home() {
     navigate("/notification");
   }
 
+  const goToSearch = () => {
+    navigate("/search");
+  };
+
   // ❤️ estados de guardado
   const [saved, setSaved] = useState<Record<SavedKeys, boolean>>({
     paine: false,
@@ -62,7 +66,7 @@ export default function Home() {
               onClick={handleLogout}
               className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center hover:bg-[#e5e7eb]"
             >
-              <img src="img/salida.png" alt="log-out" className="w-5 h-5" />
+              <LogOut className="w-5 h-5" />
             </button>
 
             <button onClick={goToNotification} className="w-10 h-10 rounded-full bg-[#F4F6FA] flex items-center justify-center">
@@ -111,10 +115,10 @@ export default function Home() {
 
             <div className="px-4 mt-3 text-[16px] font-semibold text-[#1B1E28]">Torres del Paine</div>
             <div className="px-4 text-[14px] flex items-center gap-1 text-[#7D848D]">
-              <img src="img/ubicacion.png" className="w-3 h-3" /> Magallanes y la Antártica
+              <MapPin className="w-3 h-3" /> Magallanes y la Antártica
             </div>
             <div className="px-4 flex items-center gap-1 mt-1 text-[14px] text-[#1B1E28]">
-              <img src="img/estrella.png" className="w-3 h-3" /> 4.8
+              <Star className="w-3 h-3" /> 4.8
             </div>
           </div>
 
@@ -143,10 +147,10 @@ export default function Home() {
 
             <div className="px-4 mt-3 text-[16px] font-semibold text-[#1B1E28]">Cajón del Maipo</div>
             <div className="px-4 text-[14px] flex items-center gap-1 text-[#7D848D]">
-              <img src="/img/ubicacion.png" className="w-3 h-3" /> San José de Maipo
+              <MapPin className="w-3 h-3" /> San José de Maipo
             </div>
             <div className="px-4 flex items-center gap-1 mt-1 text-[14px] text-[#1B1E28]">
-              <img src="/img/estrella.png" className="w-3 h-3" /> 4.8
+              <Star className="w-3 h-3" /> 4.8
             </div>
           </div>
         </div>
@@ -164,7 +168,7 @@ export default function Home() {
           <span className="text-[12px] text-black">Calendario</span>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" onClick={goToSearch}>
           <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
             <Search className="w-6 text-white" />
           </div>
