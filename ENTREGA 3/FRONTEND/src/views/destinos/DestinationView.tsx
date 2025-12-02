@@ -1,3 +1,4 @@
+import {MapPin, ChevronLeft} from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function DestinationView() {
@@ -70,7 +71,7 @@ const destinos: Record<string, DestinationData> = {
           onClick={goToBack}
           className="absolute top-4 left-4 z-20 w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition"
         >
-          <img src="/img/atras.png" className="w-4" />
+          <ChevronLeft className="w-4" />
         </button>
 
         {/* Título que no tapa el botón */}
@@ -99,7 +100,7 @@ const destinos: Record<string, DestinationData> = {
         {/* INFO EXTRA */}
         <div className="flex items-center gap-3 mt-3 text-[14px] text-[#7D848D]">
           <div className="flex items-center gap-1">
-            <img src="/img/ubicacion.png" className="w-4 h-4" />
+            <MapPin className="w-4 h-4" />
             {data.region}
           </div>
           <div className="flex items-center gap-1">
