@@ -23,6 +23,10 @@ export default function Calendar() {
     const goToBack = () => {
       navigate('/home');
     }
+    const goToSearch = () => {
+      navigate("/search");
+    };
+
     const [filter] = useState<"today" | "week" | "month">("today");
     return (
     <div className="w-full min-h-screen bg-white px-5 pb-10 pt-6">
@@ -113,7 +117,7 @@ export default function Calendar() {
           <span className="text-[12px] text-[#007AFF] font-semibold">Calendario</span>
         </div>
 
-        <div className="flex flex-col items-center">
+        <div className="flex flex-col items-center" onClick={goToSearch}>
           <div className="w-14 h-14 bg-[#007AFF] rounded-full flex items-center justify-center shadow-lg">
             <Search className="w-6 text-white" />
           </div>
