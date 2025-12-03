@@ -6,8 +6,8 @@ export default function Splash() {
   const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    setTimeout(() => setShowText(true), 800);  // Aparece el texto
-    setTimeout(() => navigate("/home"), 2000); // Cambia a Home
+    setTimeout(() => setShowText(true), 1000);  
+    setTimeout(() => navigate("/auth/login"), 2000); 
   }, [navigate]);
 
   return (

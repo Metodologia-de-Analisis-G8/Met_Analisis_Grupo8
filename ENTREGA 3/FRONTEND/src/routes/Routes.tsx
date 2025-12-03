@@ -52,6 +52,9 @@ const Notification = Loadable(
 const SearchPage = Loadable(
   lazy(() => import("../views/Seach/seach"))
 );
+const Reserva = Loadable(
+  lazy(() => import("../views/Reserva/reserva"))
+);
 
 /* ****End Pages***** */
 
@@ -96,7 +99,6 @@ const Router = [
   children: [
     { path: "", element: <Splash /> },
     { path: "home", element: <Home /> },
-
     { path: "destinos", element: <DestinationList /> },
     { path: "destinos/:id", element: <DestinationView /> },
     { path: "perfil", element: <ProfileScreen /> },
@@ -105,6 +107,7 @@ const Router = [
     { path: "calendar", element: <Calendar /> },
     { path: "notification", element: <Notification /> },
     { path: "search", element: <SearchPage /> },
+    { path: "reserva/:id", element: <Reserva /> },
     { path: "*", element: <Navigate to="/error/404" />  }
   ],
 },
