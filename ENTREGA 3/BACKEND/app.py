@@ -3,6 +3,7 @@ from flask_cors import CORS
 import sqlite3
 from flask_bcrypt import Bcrypt
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
+from datetime import datetime
 
 
 DB = "database.db"
@@ -53,7 +54,7 @@ def login():
     user = cursor.fetchone()
     conn.close()
 
-    if user and user["password"] == password:
+    if user and bcrypt.check_password_hash(user["password"], password):
         token = create_access_token(identity=email)
         return jsonify({"token": token})
     else:
@@ -69,7 +70,11 @@ def perfil():
     user = cursor.fetchone()
     conn.close()
 
-    return jsonify(dict(user))
+    data = dict(user)
+    data["avatar"] = "/img/avatar.png"  # ⚡ avatar por defecto desde backend
+    
+    return jsonify(data)
+
 
 # ---------------------------
 # GET  /destinos
@@ -191,9 +196,108 @@ def get_horarios(destino_id):
     conn.close()
     return jsonify(data)
 
+# GET /destinos/recomendados
+@app.get("/destinos/recomendados")
+def destinos_recomendados():
+    # Simple heurística: devolver los destacados primero, luego los primeros 6
+    conn = get_db()
+    cursor = conn.execute("SELECT * FROM destinos ORDER BY destacado DESC LIMIT 8")
+    data = [dict(row) for row in cursor.fetchall()]
+    conn.close()
+    return jsonify(data)
 
+# POST /reservas
+@app.post("/reservas")
+@jwt_required(optional=True)  # permitimos reserva como invitado, pero preferimos usuario
+def crear_reserva():
+    """
+    JSON body:
+    {
+      "destino_id": 1,
+      "horario_id": 2,
+      "usuario_id": null (optional if token presente),
+      "cantidad": 1
+    }
+    """
+    data = request.json or {}
+    destino_id = data.get("destino_id")
+    horario_id = data.get("horario_id")
+    cantidad = int(data.get("cantidad", 1))
 
+    if not destino_id or not horario_id:
+        return jsonify({"error": "destino_id y horario_id son requeridos"}), 400
 
+    conn = get_db()
+    # verificar horario y cupos
+    cursor = conn.execute("SELECT id, cupos FROM horarios_destino WHERE id = ? AND destino_id = ?", (horario_id, destino_id))
+    horario = cursor.fetchone()
+    if not horario:
+        conn.close()
+        return jsonify({"error": "Horario no encontrado"}), 404
+
+    if horario["cupos"] < cantidad:
+        conn.close()
+        return jsonify({"error": "No hay suficientes cupos disponibles"}), 409
+
+    # obtener usuario si hay token
+    user_email = None
+    try:
+        user_email = get_jwt_identity()
+    except Exception:
+        user_email = None
+
+    usuario_id = None
+    if user_email:
+        cur2 = conn.execute("SELECT id FROM usuarios WHERE email = ?", (user_email,))
+        u = cur2.fetchone()
+        usuario_id = u["id"] if u else None
+
+    # crear reserva
+    fecha_reserva = datetime.utcnow().isoformat()
+    conn.execute("""
+        INSERT INTO reservas (usuario_id, destino_id, horario_id, estado, fecha_reserva)
+        VALUES (?, ?, ?, ?, ?)
+    """, (usuario_id, destino_id, horario_id, "reservado", fecha_reserva))
+    # decrementar cupos
+    conn.execute("UPDATE horarios_destino SET cupos = cupos - ? WHERE id = ?", (cantidad, horario_id))
+    conn.commit()
+
+    # obtener id reserva recien creada
+    cursor = conn.execute("SELECT last_insert_rowid() as id")
+    rid = cursor.fetchone()["id"]
+    conn.close()
+
+    return jsonify({"success": True, "reserva_id": rid, "message": "Reserva creada. Procede al pago."})
+
+# POST /pagos  (simulado)
+@app.post("/pagos")
+def crear_pago():
+    """
+    Body:
+    {
+      "reserva_id": 5,
+      "monto": 15000,
+      "metodo": "tarjeta"  // en prototipo aceptamos y devolvemos ok
+    }
+    """
+    data = request.json or {}
+    reserva_id = data.get("reserva_id")
+    monto = data.get("monto")
+    metodo = data.get("metodo", "simulado")
+
+    if not reserva_id or not monto:
+        return jsonify({"error": "reserva_id y monto son requeridos"}), 400
+
+    conn = get_db()
+    # marcar pago y actualizar estado de reserva a "pagado"
+    fecha_pago = datetime.utcnow().isoformat()
+    conn.execute("INSERT INTO pagos (reserva_id, monto, metodo, fecha_pago) VALUES (?,?,?,?)",
+                 (reserva_id, monto, metodo, fecha_pago))
+    conn.execute("UPDATE reservas SET estado = ? WHERE id = ?", ("pagado", reserva_id))
+    conn.commit()
+    conn.close()
+
+    return jsonify({"success": True, "message": "Pago simulado OK"})
 # ---------------------------
 # RUN SERVER
 # ---------------------------

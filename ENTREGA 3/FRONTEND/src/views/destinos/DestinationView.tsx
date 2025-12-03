@@ -1,4 +1,4 @@
-import {MapPin, ChevronLeft, TicketPlus, Info} from "lucide-react";
+import {MapPin, ChevronLeft, TicketPlus, } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
 
 export default function DestinationView() {
@@ -7,6 +7,9 @@ export default function DestinationView() {
   
   const goToBack = () => {
     navigate(-1);
+  }
+  const MapView = () => {
+    navigate(`/mapa/${id}`);
   }
   const Reservar = () => {
   navigate(`/reserva/${id}`);
@@ -23,36 +26,6 @@ export default function DestinationView() {
   reviews: string;
   miniaturas: string[];
 }
-/*const hacerReserva = async () => {
-  const token = localStorage.getItem("token");
-
-  if (!token) {
-    alert("Debes iniciar sesión antes de reservar");
-    return;
-  }
-
-  const respuesta = await fetch("http://localhost:5000/reservas", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      "Authorization": "Bearer " + token,
-    },
-    body: JSON.stringify({
-      destino_id: id === "paine" ? 1 : 2,
-      horario_id: 1,
-      fecha_reserva: "2025-10-22"
-    }),
-  });
-
-  const data = await respuesta.json();
-
-  if (data.success) {
-    alert("Reserva creada correctamente 🎉");
-    navigate("/mis-reservas");
-  } else {
-    alert("Error al crear la reserva: " + data.error);
-  }
-};*/
 
 
 
@@ -175,9 +148,9 @@ const destinos: Record<string, DestinationData> = {
         </button>
 
 
-        <button className="flex-1 bg-[#062E5C] text-white py-3 rounded-[14px] font-semibold flex items-center justify-center gap-2">
-          <Info className="w-5 h-5" />
-          Más información
+        <button onClick={MapView} className="flex-1 bg-[#062E5C] text-white py-3 rounded-[14px] font-semibold flex items-center justify-center gap-2">
+          <MapPin className="w-5 h-5" />
+          Ver Ubicación
         </button>
       </div>
     </div>

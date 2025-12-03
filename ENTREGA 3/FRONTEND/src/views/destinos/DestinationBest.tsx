@@ -1,4 +1,4 @@
-import { Heart } from "lucide-react";
+import { Heart, ChevronLeft } from "lucide-react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -29,7 +29,7 @@ export default function DestinationBest() {
       region: "Magallanes",
       precio: "$5.200",
       rating: 4.8,
-      imagen: "/img/paine2.png",
+      imagen: "/img/paine.png",
     },
     {
       id: "cajon",
@@ -58,7 +58,7 @@ export default function DestinationBest() {
           onClick={goToBack}
           className="w-9 h-9 rounded-full bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition"
         >
-          <img src="/img/atras.png" className="w-4" />
+          <ChevronLeft size={20} />
         </button>
 
         <h1 className="absolute left-1/2 transform -translate-x-1/2 text-[18px] font-semibold">

@@ -1,11 +1,16 @@
 import sqlite3
+from flask_bcrypt import Bcrypt
+
+# Crear un bcrypt temporal para encriptar contraseñas iniciales
+bcrypt = Bcrypt()
 
 conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
 
 # ------------------------------
 # 1) Usuarios
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS usuarios (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     email TEXT UNIQUE NOT NULL,
@@ -15,11 +20,10 @@ CREATE TABLE IF NOT EXISTS usuarios (
 )
 """)
 
-
 # ------------------------------
 # 2) Destinos turísticos
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS destinos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     nombre TEXT,
@@ -34,9 +38,9 @@ CREATE TABLE IF NOT EXISTS destinos (
 """)
 
 # ------------------------------
-# 3) Horarios disponibles en un destino
+# 3) Horarios disponibles
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS horarios_destino (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     destino_id INTEGER,
@@ -48,15 +52,15 @@ CREATE TABLE IF NOT EXISTS horarios_destino (
 """)
 
 # ------------------------------
-# 4) Reservas de usuarios
+# 4) Reservas
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS reservas (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario_id INTEGER,
     destino_id INTEGER,
     horario_id INTEGER,
-    estado TEXT,   -- reservado, pagado, cancelado
+    estado TEXT,
     fecha_reserva TEXT,
     FOREIGN KEY(usuario_id) REFERENCES usuarios(id),
     FOREIGN KEY(destino_id) REFERENCES destinos(id),
@@ -67,21 +71,21 @@ CREATE TABLE IF NOT EXISTS reservas (
 # ------------------------------
 # 5) Pagos
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS pagos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     reserva_id INTEGER,
     monto REAL,
-    metodo TEXT,  -- tarjeta, debito, credito, webpay, simulado
+    metodo TEXT,
     fecha_pago TEXT,
     FOREIGN KEY(reserva_id) REFERENCES reservas(id)
 )
 """)
 
 # ------------------------------
-# 6) Favoritos por usuario (opcional)
+# 6) Favoritos
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS favoritos (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario_id INTEGER,
@@ -94,7 +98,7 @@ CREATE TABLE IF NOT EXISTS favoritos (
 # ------------------------------
 # 7) Notificaciones
 # ------------------------------
-conn.execute("""
+cursor.execute("""
 CREATE TABLE IF NOT EXISTS notificaciones (
     id INTEGER PRIMARY KEY AUTOINCREMENT,
     usuario_id INTEGER,
@@ -106,44 +110,52 @@ CREATE TABLE IF NOT EXISTS notificaciones (
 """)
 
 # -----------------------------------------------------
-# Insertar destinos reales de ejemplo
+# Insertar destinos ejemplo
 # -----------------------------------------------------
+
 destinos = [
-    ("Torres del Paine", "Destino icónico de la Patagonia", -51.066, -73.273, 15000, "/img/paine.png", "Magallanes", 1),
-    ("Valle del Elqui", "Observación astronómica y cielos despejados", -30.17, -70.53, 8000, "/img/elqui.png", "Coquimbo", 1),
+    ("Torres del Paine", "Destino icónico de la Patagonia", -51.066, -73.273, 15000, "/img/paine2.png", "Magallanes", 1),
     ("Cajón del Maipo", "Rutas de trekking y naturaleza", -33.633, -70.331, 5000, "/img/cajon2.png", "RM", 1),
     ("Desierto de Atacama", "El lugar más árido del mundo", -23.98, -69.23, 12000, "/img/atacama.png", "Antofagasta", 0),
 ]
 
-conn.executemany(
-    "INSERT INTO destinos(nombre, descripcion, lat, lon, precio, imagen, region, destacado) VALUES (?,?,?,?,?,?,?,?)",
-    destinos
-)
+cursor.executemany("""
+INSERT INTO destinos(nombre, descripcion, lat, lon, precio, imagen, region, destacado) 
+VALUES (?, ?, ?, ?, ?, ?, ?, ?)
+""", destinos)
 
 # -----------------------------------------------------
 # Insertar horarios ejemplo
 # -----------------------------------------------------
 horarios = [
-    (1, "2026-01-26", "09:00", 20),
-    (1, "2026-01-26", "14:00", 20),
+    (1, "2026-01-22", "09:00", 20),
+    (1, "2026-01-21", "14:00", 20),
     (2, "2026-02-15", "10:00", 30),
     (3, "2026-02-28", "09:00", 25),
 ]
 
-conn.executemany(
-    "INSERT INTO horarios_destino(destino_id, fecha, hora, cupos) VALUES (?,?,?,?)",
-    horarios
-)
+cursor.executemany("""
+INSERT INTO horarios_destino(destino_id, fecha, hora, cupos)
+VALUES (?, ?, ?, ?)
+""", horarios)
 
 # -----------------------------------------------------
-# Insertar usuario de prueba
+# Insertar usuarios de prueba
 # -----------------------------------------------------
-conn.execute("""
-INSERT INTO usuarios(nombre, email, password, fecha_creacion)
-VALUES ("Turista Prueba", "turista@gmail.com", "1234", "2025-10-05")
-""")
+
+usuarios = [
+    ("turista@gmail.com", bcrypt.generate_password_hash("1234").decode(), "Jorge López", "2025-10-05"),
+    ("ana@gmail.com", bcrypt.generate_password_hash("abcd").decode(), "Ana Martínez", "2025-11-10"),
+    ("carlos@gmail.com", bcrypt.generate_password_hash("xyz1").decode(), "Carlos Pérez", "2025-12-01"),
+    ("maria@gmail.com", bcrypt.generate_password_hash("pass123").decode(), "María Gómez", "2025-12-15")
+]
+
+cursor.executemany("""
+INSERT INTO usuarios(email, password, nombre, fecha_creacion)
+VALUES (?, ?, ?, ?)
+""", usuarios)
 
 conn.commit()
 conn.close()
 
-print("DATABASE LISTA ✔ con datos iniciales cargados")
+print("DATABASE LISTA ✔ con datos iniciales corregidos y cargados")
