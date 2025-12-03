@@ -26,7 +26,7 @@ export default function ReservaView() {
       })
     );
 
-    navigate("/confirmacion");
+    navigate("/home");
   };
 
   return (
@@ -71,10 +71,10 @@ export default function ReservaView() {
             onChange={(e) => setHora(e.target.value)}
           >
             <option value="">Seleccione un horario</option>
-            <option value="08:00">🕗 08:00</option>
-            <option value="10:00">🕙 10:00</option>
-            <option value="12:00">🕛 12:00</option>
-            <option value="15:00">🕒 15:00</option>
+            <option value="08:00"> 08:00</option>
+            <option value="10:00"> 10:00</option>
+            <option value="12:00"> 12:00</option>
+            <option value="15:00"> 15:00</option>
           </select>
         </div>
 
