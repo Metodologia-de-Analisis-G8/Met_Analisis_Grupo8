@@ -179,6 +179,19 @@ def get_reservas():
     conn.close()
     return jsonify(data)
 
+@app.get("/horarios/<int:destino_id>")
+def get_horarios(destino_id):
+    conn = get_db()
+    cursor = conn.execute("""
+        SELECT id, fecha, hora, cupos
+        FROM horarios_destino
+        WHERE destino_id = ?
+    """, (destino_id,))
+    data = [dict(row) for row in cursor.fetchall()]
+    conn.close()
+    return jsonify(data)
+
+
 
 
 # ---------------------------
