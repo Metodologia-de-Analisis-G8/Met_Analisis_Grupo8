@@ -1,5 +1,8 @@
 import sqlite3
 from flask_bcrypt import Bcrypt
+import os
+
+
 
 # Crear un bcrypt temporal para encriptar contraseñas iniciales
 bcrypt = Bcrypt()
@@ -114,7 +117,7 @@ CREATE TABLE IF NOT EXISTS notificaciones (
 # -----------------------------------------------------
 
 destinos = [
-    ("Torres del Paine", "Destino icónico de la Patagonia", -51.066, -73.273, 15000, "/img/paine2.png", "Magallanes", 1),
+    ("Torres del Paine", "Destino icónico de la Patagonia", -51.066, -73.273, 15000, "/img/paine.png", "Magallanes", 1),
     ("Cajón del Maipo", "Rutas de trekking y naturaleza", -33.633, -70.331, 5000, "/img/cajon2.png", "RM", 1),
     ("Desierto de Atacama", "El lugar más árido del mundo", -23.98, -69.23, 12000, "/img/atacama.png", "Antofagasta", 0),
 ]
@@ -155,7 +158,19 @@ INSERT INTO usuarios(email, password, nombre, fecha_creacion)
 VALUES (?, ?, ?, ?)
 """, usuarios)
 
+
+reservas = [
+    (1, 1, 1, "confirmada", "2025-12-20"),
+    (2, 2, 3, "pendiente", "2025-12-22"),
+    (3, 3, 4, "cancelada", "2025-12-25"),
+]
+cursor.executemany("""
+INSERT INTO reservas(usuario_id, destino_id, horario_id, estado, fecha_reserva)
+VALUES (?, ?, ?, ?, ?)
+""", reservas)
+
 conn.commit()
 conn.close()
 
 print("DATABASE LISTA ✔ con datos iniciales corregidos y cargados")
+print("BD que se creará en:", os.path.abspath("database.db"))

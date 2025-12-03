@@ -27,8 +27,6 @@ export default function Calendar() {
     return parseInt(partes[2]);  // obtiene día: 22
   }
 
-
-
   const reservasFiltradas = reservas.filter(r => obtenerDiaNumero(r.date) === selected);
 
   useEffect(() => {

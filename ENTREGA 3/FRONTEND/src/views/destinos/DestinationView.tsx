@@ -64,6 +64,21 @@ const destinos: Record<string, DestinationData> = {
         "/img/p5.jpg",*/
       ],
     },
+    valparaiso: {
+      nombre: "Puerto Valparaíso",
+      region: "Valparaíso",
+      rating: 4.7,
+      reviews: "8.200",
+      precio: "Gratis",
+      descripcion:
+        "Valparaíso es conocido por su arquitectura colorida, su vibrante vida cultural y su puerto histórico. Los visitantes pueden explorar sus cerros, disfrutar de su gastronomía y descubrir su arte callejero.",
+      imagen: "/img/valparaiso3.png",
+      miniaturas: [
+        "/img/valpo.png",
+        "/img/valparaiso2.png",
+        "/img/valparaiso3.png",
+      ],
+    },
   };
 
 

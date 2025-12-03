@@ -17,7 +17,7 @@ export default function SearchPage() {
     { id: "paine", name: "Torres del Paine", img: "/img/torresdelpaine.jpg", location: "Magallanes", rating: 4.8 },
     { id: "cajon", name: "Cajón del Maipo", img: "/img/cajondelmaipo.jpg", location: "RM", rating: 4.7 },
     { id: "atacama", name: "San Pedro de Atacama", img: "/img/atacama.png", location: "Antofagasta", rating: 4.6 },
-    { id: "valparaiso", name: "Valparaíso", img: "/img/valpo.png", location: "Valparaíso", rating: 4.5 },
+    { id: "valparaiso", name: "Puerto Valparaíso", img: "/img/valpo.png", location: "Valparaíso", rating: 4.5 },
     { id: "viña", name: "Viña del Mar", img: "/img/vina.png", location: "Valparaíso", rating: 4.4 },
     
   ];
