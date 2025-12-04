@@ -8,15 +8,16 @@ export default function DestinationView() {
   const goToBack = () => {
     navigate(-1);
   }
-  const MapView = () => {
-    navigate(`/mapa/${id}`);
-  }
+  const goToMap = () => {
+  navigate(`/map/${data.lat}/${data.lon}/${data.nombre}`);
+};
+
   const Reservar = () => {
   navigate(`/reserva/${id}`);
 };
 
 
-  interface DestinationData {
+interface DestinationData {
   nombre: string;
   region: string;
   precio: string;
@@ -25,61 +26,68 @@ export default function DestinationView() {
   imagen: string;
   reviews: string;
   miniaturas: string[];
+  lat: number; 
+  lon: number; 
 }
 
 
 
+
 const destinos: Record<string, DestinationData> = {
-    paine: {
-      nombre: "Torres del Paine",
-      region: "Magallanes y la Antártica",
-      rating: 4.8,
-      reviews: "10.600",
-      precio: "$5.200",
-      descripcion:
-        "En el Parque Nacional Torres del Paine, puedes disfrutar de una gran variedad de actividades, incluyendo trekking, navegación, avistamiento de fauna, y exploración de paisajes naturales.",
-      imagen: "/img/paine.png",
-      miniaturas: [
-        "/img/paine.png",
-        "/img/torresdelpaine.jpg",
-        "/img/torres3.png",
-        /*"/img/p4.jpg",
-        "/img/p5.jpg",*/
-      ],
-    },
-    cajon: {
-      nombre: "Cajon del Maipo",
-      region: "Metropolitana",
-      rating: 4.8,
-      reviews: "1.500",
-      precio: "$2.500",
-      descripcion:
-        "Los visitantes pueden disfrutar de una variedad de actividades, como senderismo, rafting, escalada y paseos a caballo. Además, el área cuenta con termas naturales donde los turistas pueden relajarse después de un día lleno de aventuras. El Cajón del Maipo también",
-      imagen: "/img/cajon2.png",
-      miniaturas: [
-        "/img/cajon2.png",
-        "/img/cajondelmaipo.jpg",
-        "/img/cajon3.png",
-        /*"/img/p4.jpg",
-        "/img/p5.jpg",*/
-      ],
-    },
-    valparaiso: {
-      nombre: "Puerto Valparaíso",
-      region: "Valparaíso",
-      rating: 4.7,
-      reviews: "8.200",
-      precio: "Gratis",
-      descripcion:
-        "Valparaíso es conocido por su arquitectura colorida, su vibrante vida cultural y su puerto histórico. Los visitantes pueden explorar sus cerros, disfrutar de su gastronomía y descubrir su arte callejero.",
-      imagen: "/img/valparaiso3.png",
-      miniaturas: [
-        "/img/valpo.png",
-        "/img/valparaiso2.png",
-        "/img/valparaiso3.png",
-      ],
-    },
-  };
+  paine: {
+    nombre: "Torres del Paine",
+    region: "Magallanes y la Antártica",
+    rating: 4.8,
+    reviews: "10.600",
+    precio: "$5.200",
+    descripcion:
+      "En el Parque Nacional Torres del Paine, puedes disfrutar...",
+    imagen: "/img/paine.png",
+    miniaturas: [
+      "/img/paine.png",
+      "/img/torresdelpaine.jpg",
+      "/img/torres3.png",
+    ],
+    lat: -51.253,
+    lon: -72.331,
+  },
+
+  cajon: {
+    nombre: "Cajón del Maipo",
+    region: "Metropolitana",
+    rating: 4.8,
+    reviews: "1.500",
+    precio: "$2.500",
+    descripcion:
+      "Los visitantes pueden disfrutar...",
+    imagen: "/img/cajon2.png",
+    miniaturas: [
+      "/img/cajon2.png",
+      "/img/cajondelmaipo.jpg",
+      "/img/cajon3.png",
+    ],
+    lat: -33.648,
+    lon: -70.330,
+  },
+
+  valparaiso: {
+    nombre: "Puerto Valparaíso",
+    region: "Valparaíso",
+    rating: 4.7,
+    reviews: "8.200",
+    precio: "Gratis",
+    descripcion:
+      "Valparaíso es conocido por...",
+    imagen: "/img/valparaiso3.png",
+    miniaturas: [
+      "/img/valpo.png",
+      "/img/valparaiso2.png",
+      "/img/valparaiso3.png",
+    ],
+    lat: -33.047,
+    lon: -71.612,
+  }
+};
 
 
   const data = destinos[id as keyof typeof destinos];
@@ -161,12 +169,13 @@ const destinos: Record<string, DestinationData> = {
           <TicketPlus className="w-5 h-5" />
           Hacer Reserva
         </button>
-
-
-        <button onClick={MapView} className="flex-1 bg-[#062E5C] text-white py-3 rounded-[14px] font-semibold flex items-center justify-center gap-2">
+        <button 
+          onClick={goToMap}
+          className="flex-1 bg-[#062E5C] text-white py-3 rounded-[14px] font-semibold flex items-center justify-center gap-2">
           <MapPin className="w-5 h-5" />
           Ver Ubicación
         </button>
+
       </div>
     </div>
   );

@@ -55,6 +55,9 @@ const SearchPage = Loadable(
 const Reserva = Loadable(
   lazy(() => import("../views/Reserva/reserva"))
 );
+const MapView = Loadable(
+  lazy(() => import("../views/MapView"))
+);
 
 
 /* ****End Pages***** */
@@ -65,6 +68,10 @@ const Router = [
     element: <BlankLayout />,
     children: [{ path: "404", element: <Error /> }],
   },
+  {
+  path: "/map/:lat/:lon/:title",
+  element: <MapView />
+},
   {
     path: "/auth",
     element: (

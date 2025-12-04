@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { MapView } from "../../components/MapView.tsx";
 
 type Horario = { id: number; fecha: string; hora: string; cupos: number };
 type Destino = {
@@ -74,7 +73,6 @@ export default function DestinationDetail() {
       <h2 className="text-2xl font-semibold">{destino.nombre}</h2>
       <p className="text-gray-600">{destino.descripcion}</p>
       <div className="mt-4">
-        <MapView lat={destino.lat} lon={destino.lon} title={destino.nombre} />
       </div>
 
       <div className="mt-4 bg-white p-4 rounded shadow">
