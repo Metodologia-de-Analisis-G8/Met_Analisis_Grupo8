@@ -41,7 +41,7 @@ const destinos: Record<string, DestinationData> = {
     reviews: "10.600",
     precio: "$5.200",
     descripcion:
-      "En el Parque Nacional Torres del Paine, puedes disfrutar...",
+      "En el Parque Nacional Torres del Paine, puedes disfrutar de una gran variedad de actividades, incluyendo trekking, navegación, avistamiento de fauna, y exploración de paisajes naturales.",
     imagen: "/img/paine.png",
     miniaturas: [
       "/img/paine.png",
@@ -59,7 +59,7 @@ const destinos: Record<string, DestinationData> = {
     reviews: "1.500",
     precio: "$2.500",
     descripcion:
-      "Los visitantes pueden disfrutar...",
+      "Los visitantes pueden disfrutar de una variedad de actividades, como senderismo, rafting, escalada y paseos a caballo. Además, el área cuenta con termas naturales donde los turistas pueden relajarse después de un día lleno de aventuras. El Cajón del Maipo también",
     imagen: "/img/cajon2.png",
     miniaturas: [
       "/img/cajon2.png",
@@ -77,7 +77,7 @@ const destinos: Record<string, DestinationData> = {
     reviews: "8.200",
     precio: "Gratis",
     descripcion:
-      "Valparaíso es conocido por...",
+      "Valparaíso es conocido por su arquitectura colorida, su vibrante vida cultural y su puerto histórico. Los visitantes pueden explorar sus cerros, disfrutar de su gastronomía y descubrir su arte callejero.",
     imagen: "/img/valparaiso3.png",
     miniaturas: [
       "/img/valpo.png",
@@ -86,6 +86,23 @@ const destinos: Record<string, DestinationData> = {
     ],
     lat: -33.047,
     lon: -71.612,
+  },
+  viña: {
+    nombre: "Viña del Mar",
+    region: "Valparaíso",
+    rating: 4.6,
+    reviews: "7.800",
+    precio: "Gratis",
+    descripcion:
+      "Viña del Mar es famosa por sus playas, jardines y festivales. Los visitantes pueden disfrutar de su arquitectura, gastronomía y vida nocturna.",
+    imagen: "/img/vina.png",
+    miniaturas: [
+      "/img/vina.png",
+      "/img/vina2.png",
+      "/img/vina3.png",
+    ],
+    lat: -33.024,
+    lon: -71.551,
   }
 };
 
